@@ -1,0 +1,111 @@
+.nova-toaster {
+  position: fixed;
+  z-index: var(--nova-z-toast);
+  right: var(--nova-space-4);
+  bottom: var(--nova-space-4);
+  width: min(380px, calc(100vw - 32px));
+  pointer-events: none;
+}
+
+.nova-toaster__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nova-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nova-toast {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--nova-space-3);
+  padding: var(--nova-space-3) var(--nova-space-3) var(--nova-space-3) var(--nova-space-4);
+  border: 1px solid var(--nova-color-border);
+  border-left-width: 3px;
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-color-surface-raised);
+  color: var(--nova-color-text);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-font-size-md);
+  box-shadow: var(--nova-shadow-lg);
+  pointer-events: auto;
+  animation: nova-toast-in var(--nova-duration-slow) var(--nova-easing-emphasized);
+}
+
+.nova-toast--success {
+  border-left-color: var(--nova-color-success);
+}
+
+.nova-toast--danger {
+  border-left-color: var(--nova-color-danger);
+}
+
+.nova-toast__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.nova-toast__title {
+  margin: 0;
+  font-weight: 600;
+}
+
+.nova-toast__description {
+  margin: 2px 0 0;
+  color: var(--nova-color-text-muted);
+  font-size: var(--nova-font-size-sm);
+}
+
+.nova-toast__action {
+  flex: none;
+  height: 28px;
+  padding: 0 var(--nova-space-3);
+  border: 1px solid var(--nova-color-border-strong);
+  border-radius: var(--nova-radius-sm);
+  background: none;
+  color: var(--nova-color-text);
+  font: inherit;
+  font-size: var(--nova-font-size-sm);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.nova-toast__action:hover {
+  background: var(--nova-color-bg-subtle);
+}
+
+.nova-toast__close {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--nova-radius-sm);
+  background: none;
+  color: var(--nova-color-text-muted);
+  cursor: pointer;
+}
+
+.nova-toast__close:hover {
+  background: var(--nova-color-bg-subtle);
+  color: var(--nova-color-text);
+}
+
+.nova-toast__close svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+
+@keyframes nova-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+}

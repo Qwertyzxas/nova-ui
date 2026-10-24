@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ColorTable, ScaleTable } from './TokenTables';
+
+<Meta title="Токены" />
+
+# Дизайн-токены
+
+Все значения ниже генерируются из `src/tokens/tokens.ts` — того же файла, из которого собираются CSS-переменные. Компоненты используют только переменные, поэтому смена темы — это смена набора значений, без единой правки в компонентах.
+
+Автотест проверяет, что текст на своём фоне даёт контраст не ниже **4.5:1** (WCAG AA), а границы полей и кольцо фокуса — не ниже **3:1** (WCAG 1.4.11), в обеих темах.
+
+## Цвета
+
+<ColorTable />
+
+## Отступы, радиусы, типографика, анимации
+
+<ScaleTable />
+
+## Использование в своём CSS
+
+```css
+.my-card {
+  padding: var(--nova-space-4);
+  border-radius: var(--nova-radius-lg);
+  background: var(--nova-color-surface);
+  color: var(--nova-color-text);
+}
+```
+
+Или из TypeScript с автодополнением:
+
+```ts
+import { cssVar } from '@qwertyzxas/nova-ui';
+
+const style = { color: cssVar.color('accent-fg'), padding: cssVar.space(4) };
+```

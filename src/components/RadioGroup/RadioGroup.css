@@ -1,0 +1,28 @@
+.nova-radio-group {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.nova-radio-group__legend {
+  margin-bottom: var(--nova-space-2);
+  padding: 0;
+  color: var(--nova-color-text);
+  font-size: var(--nova-font-size-sm);
+  font-weight: 500;
+}
+
+.nova-radio-group__items {
+  display: flex;
+  gap: var(--nova-space-3);
+}
+
+.nova-radio-group--vertical .nova-radio-group__items {
+  flex-direction: column;
+}
+
+.nova-radio-group--horizontal .nova-radio-group__items {
+  flex-wrap: wrap;
+  gap: var(--nova-space-5);
+}

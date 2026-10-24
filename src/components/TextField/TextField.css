@@ -1,0 +1,114 @@
+/* Shared by every labelled form control (TextField, Select). */
+.nova-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.nova-field__label {
+  color: var(--nova-color-text);
+  font-size: var(--nova-font-size-sm);
+  font-weight: 500;
+}
+
+.nova-field__required {
+  margin-left: 2px;
+  color: var(--nova-color-danger-fg);
+}
+
+.nova-field__box {
+  display: flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+  padding: 0 var(--nova-space-3);
+  border: 1px solid var(--nova-color-border-strong);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-color-surface);
+  transition:
+    border-color var(--nova-duration-fast) var(--nova-easing-standard),
+    box-shadow var(--nova-duration-fast) var(--nova-easing-standard);
+}
+
+.nova-field__box:hover {
+  border-color: var(--nova-color-text-muted);
+}
+
+.nova-field__box:focus-within {
+  border-color: var(--nova-color-focus-ring);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--nova-color-focus-ring) 25%, transparent);
+}
+
+.nova-field.is-invalid .nova-field__box {
+  border-color: var(--nova-color-danger);
+}
+
+.nova-field.is-invalid .nova-field__box:focus-within {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--nova-color-danger) 25%, transparent);
+}
+
+.nova-field__control {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--nova-color-text);
+  font: inherit;
+}
+
+/* readable hints: placeholder text gets the same 4.5:1 as other text */
+.nova-field__control::placeholder {
+  color: var(--nova-color-text-muted);
+  opacity: 1;
+}
+
+.nova-field__control:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.nova-field--sm .nova-field__box {
+  min-height: 30px;
+  font-size: var(--nova-font-size-sm);
+}
+
+.nova-field--md .nova-field__box {
+  min-height: 38px;
+}
+
+.nova-field--lg .nova-field__box {
+  min-height: 46px;
+  font-size: var(--nova-font-size-lg);
+}
+
+.nova-field__box--multiline {
+  align-items: flex-start;
+  padding-top: var(--nova-space-2);
+  padding-bottom: var(--nova-space-2);
+}
+
+textarea.nova-field__control {
+  resize: vertical;
+  line-height: var(--nova-line-height-normal);
+}
+
+.nova-field__adornment {
+  display: inline-flex;
+  color: var(--nova-color-text-muted);
+}
+
+.nova-field__description,
+.nova-field__error {
+  margin: 0;
+  font-size: var(--nova-font-size-xs);
+}
+
+.nova-field__description {
+  color: var(--nova-color-text-muted);
+}
+
+.nova-field__error {
+  color: var(--nova-color-danger-fg);
+}

@@ -1,0 +1,29 @@
+.nova-tooltip-anchor {
+  display: inline-flex;
+}
+
+.nova-tooltip {
+  position: fixed;
+  z-index: var(--nova-z-tooltip);
+  max-width: 260px;
+  padding: 6px 10px;
+  border-radius: var(--nova-radius-sm);
+  background: var(--nova-color-text);
+  color: var(--nova-color-bg);
+  font-family: var(--nova-font-sans);
+  font-size: var(--nova-font-size-xs);
+  line-height: var(--nova-line-height-tight);
+  box-shadow: var(--nova-shadow-md);
+  animation: nova-tooltip-in var(--nova-duration-fast) var(--nova-easing-standard);
+}
+
+.nova-tooltip[hidden] {
+  display: none;
+}
+
+@keyframes nova-tooltip-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+}

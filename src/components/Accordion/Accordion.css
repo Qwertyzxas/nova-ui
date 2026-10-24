@@ -1,0 +1,67 @@
+.nova-accordion {
+  border-top: 1px solid var(--nova-color-border);
+}
+
+.nova-accordion__item {
+  border-bottom: 1px solid var(--nova-color-border);
+}
+
+.nova-accordion__heading {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.nova-accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--nova-space-3);
+  width: 100%;
+  padding: var(--nova-space-4) var(--nova-space-1);
+  border: 0;
+  background: none;
+  color: var(--nova-color-text);
+  font: inherit;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+}
+
+.nova-accordion__trigger:hover:not(:disabled) {
+  color: var(--nova-color-accent-fg);
+}
+
+.nova-accordion__trigger:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nova-accordion__chevron {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: var(--nova-color-text-muted);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform var(--nova-duration-normal) var(--nova-easing-standard);
+}
+
+.nova-accordion__item.is-open .nova-accordion__chevron {
+  transform: rotate(180deg);
+}
+
+.nova-accordion__panel {
+  padding: 0 var(--nova-space-1) var(--nova-space-4);
+  color: var(--nova-color-text-muted);
+  animation: nova-reveal var(--nova-duration-normal) var(--nova-easing-standard);
+}
+
+@keyframes nova-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}

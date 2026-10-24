@@ -1,0 +1,78 @@
+.nova-tabs--vertical {
+  display: flex;
+  gap: var(--nova-space-6);
+}
+
+.nova-tabs__list {
+  display: flex;
+  gap: var(--nova-space-1);
+}
+
+.nova-tabs--horizontal .nova-tabs__list {
+  border-bottom: 1px solid var(--nova-color-border);
+}
+
+.nova-tabs--vertical .nova-tabs__list {
+  flex-direction: column;
+  min-width: 160px;
+  border-right: 1px solid var(--nova-color-border);
+}
+
+.nova-tabs__tab {
+  position: relative;
+  padding: var(--nova-space-2) var(--nova-space-3);
+  border: 0;
+  border-radius: var(--nova-radius-sm) var(--nova-radius-sm) 0 0;
+  background: none;
+  color: var(--nova-color-text-muted);
+  font: inherit;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: color var(--nova-duration-fast) var(--nova-easing-standard);
+}
+
+.nova-tabs__tab:hover:not(:disabled) {
+  color: var(--nova-color-text);
+}
+
+.nova-tabs__tab:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.nova-tabs__tab[aria-selected='true'] {
+  color: var(--nova-color-text);
+}
+
+/* selection indicator */
+.nova-tabs__tab::after {
+  content: '';
+  position: absolute;
+  background: var(--nova-color-accent);
+  opacity: 0;
+  transition: opacity var(--nova-duration-fast) var(--nova-easing-standard);
+}
+
+.nova-tabs--horizontal .nova-tabs__tab::after {
+  left: var(--nova-space-2);
+  right: var(--nova-space-2);
+  bottom: -1px;
+  height: 2px;
+}
+
+.nova-tabs--vertical .nova-tabs__tab::after {
+  top: var(--nova-space-1);
+  bottom: var(--nova-space-1);
+  right: -1px;
+  width: 2px;
+}
+
+.nova-tabs__tab[aria-selected='true']::after {
+  opacity: 1;
+}
+
+.nova-tabs__panel {
+  padding: var(--nova-space-4) 0;
+  border-radius: var(--nova-radius-sm);
+}

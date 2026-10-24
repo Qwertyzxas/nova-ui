@@ -1,0 +1,110 @@
+.nova-select__anchor {
+  position: relative;
+}
+
+.nova-select__trigger {
+  width: 100%;
+  justify-content: space-between;
+  color: var(--nova-color-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.nova-select__trigger:focus-visible {
+  outline: none;
+  border-color: var(--nova-color-focus-ring);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--nova-color-focus-ring) 25%, transparent);
+}
+
+.nova-select__trigger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.nova-select__value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* placeholder is real text here, so it must meet 4.5:1 like any other text */
+.nova-select__value.is-placeholder {
+  color: var(--nova-color-text-muted);
+}
+
+.nova-select__chevron,
+.nova-select__check {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.nova-select__chevron {
+  color: var(--nova-color-text-muted);
+  transition: transform var(--nova-duration-fast) var(--nova-easing-standard);
+}
+
+.nova-select__trigger[aria-expanded='true'] .nova-select__chevron {
+  transform: rotate(180deg);
+}
+
+.nova-select__list {
+  position: absolute;
+  z-index: var(--nova-z-overlay);
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  max-height: 260px;
+  margin: 0;
+  padding: 4px;
+  overflow-y: auto;
+  list-style: none;
+  border: 1px solid var(--nova-color-border);
+  border-radius: var(--nova-radius-md);
+  background: var(--nova-color-surface-raised);
+  box-shadow: var(--nova-shadow-lg);
+  animation: nova-pop var(--nova-duration-fast) var(--nova-easing-standard);
+}
+
+.nova-select__list[hidden] {
+  display: none;
+}
+
+.nova-select__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--nova-space-2);
+  min-height: 34px;
+  padding: 0 var(--nova-space-3);
+  border-radius: var(--nova-radius-sm);
+  color: var(--nova-color-text);
+  cursor: pointer;
+}
+
+.nova-select__option.is-active {
+  background: var(--nova-color-accent-soft);
+  color: var(--nova-color-accent-fg);
+}
+
+.nova-select__option[aria-disabled='true'] {
+  color: var(--nova-color-text-subtle);
+  cursor: not-allowed;
+}
+
+.nova-select__check {
+  color: var(--nova-color-accent-fg);
+}
+
+@keyframes nova-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+}

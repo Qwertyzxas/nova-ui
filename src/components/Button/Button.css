@@ -1,0 +1,150 @@
+.nova-button {
+  --_bg: transparent;
+  --_bg-hover: transparent;
+  --_fg: var(--nova-color-text);
+  --_border: transparent;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--_border);
+  border-radius: var(--nova-radius-md);
+  background: var(--_bg);
+  color: var(--_fg);
+  font: inherit;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background var(--nova-duration-fast) var(--nova-easing-standard),
+    border-color var(--nova-duration-fast) var(--nova-easing-standard),
+    transform var(--nova-duration-fast) var(--nova-easing-standard);
+}
+
+.nova-button:hover:not(:disabled, [aria-disabled='true']) {
+  background: var(--_bg-hover);
+}
+
+.nova-button:active:not(:disabled, [aria-disabled='true']) {
+  transform: translateY(1px);
+}
+
+.nova-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nova-button.is-loading {
+  cursor: progress;
+}
+
+.nova-button__content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nova-space-2);
+}
+
+/* the label stays in the layout so the width doesn't jump */
+.nova-button.is-loading .nova-button__content {
+  visibility: hidden;
+}
+
+.nova-button__spinner {
+  position: absolute;
+}
+
+.nova-button__icon {
+  display: inline-flex;
+}
+
+.nova-button__icon > svg {
+  width: 1.15em;
+  height: 1.15em;
+}
+
+.nova-button--sm {
+  height: 28px;
+  padding: 0 var(--nova-space-3);
+  font-size: var(--nova-font-size-sm);
+}
+
+.nova-button--md {
+  height: 36px;
+  padding: 0 var(--nova-space-4);
+  font-size: var(--nova-font-size-md);
+}
+
+.nova-button--lg {
+  height: 44px;
+  padding: 0 var(--nova-space-5);
+  font-size: var(--nova-font-size-lg);
+}
+
+.nova-button--full {
+  width: 100%;
+}
+
+/* tone × variant */
+.nova-button--solid.nova-button--accent {
+  --_bg: var(--nova-color-accent);
+  --_bg-hover: var(--nova-color-accent-hover);
+  --_fg: var(--nova-color-on-accent);
+}
+
+.nova-button--solid.nova-button--danger {
+  --_bg: var(--nova-color-danger);
+  --_bg-hover: color-mix(in srgb, var(--nova-color-danger) 88%, black);
+  --_fg: var(--nova-color-on-danger);
+}
+
+.nova-button--solid.nova-button--neutral {
+  --_bg: var(--nova-color-text);
+  --_bg-hover: color-mix(in srgb, var(--nova-color-text) 85%, var(--nova-color-bg));
+  --_fg: var(--nova-color-bg);
+}
+
+.nova-button--soft.nova-button--accent {
+  --_bg: var(--nova-color-accent-soft);
+  --_bg-hover: color-mix(in srgb, var(--nova-color-accent-soft) 80%, var(--nova-color-accent));
+  --_fg: var(--nova-color-accent-fg);
+}
+
+.nova-button--soft.nova-button--danger {
+  --_bg: var(--nova-color-danger-soft);
+  --_bg-hover: color-mix(in srgb, var(--nova-color-danger-soft) 85%, var(--nova-color-danger));
+  --_fg: var(--nova-color-danger-fg);
+}
+
+.nova-button--soft.nova-button--neutral {
+  --_bg: var(--nova-color-bg-subtle);
+  --_bg-hover: var(--nova-color-border);
+  --_fg: var(--nova-color-text);
+}
+
+.nova-button--outline {
+  --_border: var(--nova-color-border-strong);
+  --_bg-hover: var(--nova-color-bg-subtle);
+}
+
+.nova-button--outline.nova-button--accent {
+  --_fg: var(--nova-color-accent-fg);
+}
+
+.nova-button--outline.nova-button--danger {
+  --_fg: var(--nova-color-danger-fg);
+}
+
+.nova-button--ghost {
+  --_bg-hover: var(--nova-color-bg-subtle);
+}
+
+.nova-button--ghost.nova-button--accent {
+  --_fg: var(--nova-color-accent-fg);
+}
+
+.nova-button--ghost.nova-button--danger {
+  --_fg: var(--nova-color-danger-fg);
+}

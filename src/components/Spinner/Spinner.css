@@ -1,0 +1,45 @@
+.nova-spinner {
+  display: inline-flex;
+  flex: none;
+  color: inherit;
+}
+
+.nova-spinner svg {
+  width: 100%;
+  height: 100%;
+  animation: nova-spin 0.7s linear infinite;
+}
+
+.nova-spinner--sm {
+  width: 14px;
+  height: 14px;
+}
+
+.nova-spinner--md {
+  width: 18px;
+  height: 18px;
+}
+
+.nova-spinner--lg {
+  width: 28px;
+  height: 28px;
+}
+
+@keyframes nova-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* a slow pulse instead of spinning */
+  .nova-spinner svg {
+    animation: nova-pulse 1.6s ease-in-out infinite !important;
+  }
+}
+
+@keyframes nova-pulse {
+  50% {
+    opacity: 0.4;
+  }
+}
