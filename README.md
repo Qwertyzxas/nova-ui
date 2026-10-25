@@ -91,9 +91,9 @@ React 18.2+ и 19 указаны как peer-зависимости. Пакет 
 | Токены | Vitest | контраст по WCAG и синхронизация CSS с исходником |
 
 ```bash
-npm test                 # 82 юнит-теста
+npm test                 # 83 юнит-теста
 npm run build-storybook  # статическая документация
-npm run e2e              # 61 проверка доступности в Chromium
+npm run e2e              # 62 проверки в Chromium: доступность и контролы
 ```
 
 CI в GitHub Actions на каждый пуш проверяет типы, гоняет тесты, собирает библиотеку, проверяет содержимое npm-пакета (`npm pack --dry-run`) и публикует Storybook на GitHub Pages. Тег вида `v0.2.0` запускает публикацию в npm с provenance.

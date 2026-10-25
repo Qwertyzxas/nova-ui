@@ -6,7 +6,7 @@ const cities = [
   { value: 'msk', label: 'Москва' },
   { value: 'spb', label: 'Санкт-Петербург' },
   { value: 'kzn', label: 'Казань' },
-  { value: 'ekb', label: 'Екатеринбург', disabled: true },
+  { value: 'ekb', label: 'Екатеринбург', hint: 'Доставка временно недоступна', disabled: true },
   { value: 'nsk', label: 'Новосибирск' },
   { value: 'nn', label: 'Нижний Новгород' },
   { value: 'sam', label: 'Самара' },

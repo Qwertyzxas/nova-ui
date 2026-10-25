@@ -12,7 +12,11 @@ const meta = {
   title: 'Компоненты/Button',
   component: Button,
   args: { children: 'Сохранить', variant: 'solid', tone: 'accent', size: 'md' },
-  argTypes: { iconStart: { control: false }, iconEnd: { control: false } },
+  argTypes: {
+    iconStart: { control: false },
+    iconEnd: { control: false },
+    type: { control: 'inline-radio', options: ['button', 'submit', 'reset'] },
+  },
 } satisfies Meta<typeof Button>;
 
 export default meta;

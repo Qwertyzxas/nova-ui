@@ -7,6 +7,8 @@ import './Select.css';
 export interface SelectOption {
   value: string;
   label: string;
+  /** Secondary line under the label, e.g. why the option is unavailable. */
+  hint?: string;
   disabled?: boolean;
 }
 
@@ -59,6 +61,7 @@ export function Select({
     description: description ? `${id}-description` : undefined,
     error: error ? `${id}-error` : undefined,
     option: (index: number) => `${id}-option-${index}`,
+    hint: (index: number) => `${id}-hint-${index}`,
   };
 
   const [value, setValue] = useControllableState({ value: valueProp, defaultValue, onChange: onValueChange });
@@ -225,13 +228,22 @@ export function Select({
               role="option"
               aria-selected={option.value === value}
               aria-disabled={option.disabled || undefined}
+              aria-describedby={option.hint ? ids.hint(index) : undefined}
               className={cx('nova-select__option', index === active && 'is-active')}
               // keep focus on the trigger while clicking
               onMouseDown={(e) => e.preventDefault()}
               onPointerMove={() => enabled(index) && setActive(index)}
               onClick={() => commit(index)}
             >
-              <span>{option.label}</span>
+              <span className="nova-select__text">
+                {option.label}
+                {/* kept out of the option's name, announced as its description instead */}
+                {option.hint && (
+                  <span id={ids.hint(index)} className="nova-select__hint" aria-hidden="true">
+                    {option.hint}
+                  </span>
+                )}
+              </span>
               {option.value === value && (
                 <svg className="nova-select__check" viewBox="0 0 16 16" aria-hidden="true">
                   <path d="m3.5 8.5 3 3 6-7" />

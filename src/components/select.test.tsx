@@ -35,6 +35,15 @@ describe('Select', () => {
     expect(trigger).toHaveAttribute('aria-controls', listbox().id);
   });
 
+  it('announces an option hint as its description, not part of its name', async () => {
+    const options = countries.map((o) => (o.value === 'bg' ? { ...o, hint: 'Not shipping yet' } : o));
+    const { user, trigger } = setup({ options });
+    await user.click(trigger);
+    const option = screen.getByRole('option', { name: 'Bulgaria' });
+    expect(option).toHaveAccessibleDescription('Not shipping yet');
+    expect(option).toHaveAttribute('aria-disabled', 'true');
+  });
+
   it('opens with the mouse and selects an option', async () => {
     const { user, trigger, onValueChange } = setup();
     await user.click(trigger);

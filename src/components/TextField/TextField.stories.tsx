@@ -11,6 +11,13 @@ const meta = {
   title: 'Компоненты/TextField',
   component: Field,
   args: { label: 'Email', placeholder: 'you@example.com', description: 'Мы не передаём адрес третьим лицам.' },
+  argTypes: {
+    label: { control: 'text' },
+    description: { control: 'text' },
+    error: { control: 'text' },
+    prefix: { control: 'text' },
+    suffix: { control: 'text' },
+  },
   decorators: [(Story) => <div style={{ maxWidth: 360 }}><Story /></div>],
 } satisfies Meta<typeof Field>;
 

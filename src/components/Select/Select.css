@@ -88,6 +88,22 @@
   cursor: pointer;
 }
 
+.nova-select__text {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 0;
+}
+
+.nova-select__hint {
+  color: var(--nova-color-text-muted);
+  font-size: var(--nova-font-size-xs);
+}
+
+.nova-select__option.is-active .nova-select__hint,
+.nova-select__option[aria-disabled='true'] .nova-select__hint {
+  color: inherit;
+}
+
 .nova-select__option.is-active {
   background: var(--nova-color-accent-soft);
   color: var(--nova-color-accent-fg);
