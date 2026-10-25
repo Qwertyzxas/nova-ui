@@ -7,7 +7,6 @@ body {
   background: transparent;
 }
 
-/* docs pages follow the selected theme as well */
 .sbdocs-preview .docs-story {
   background: var(--nova-color-bg);
 }

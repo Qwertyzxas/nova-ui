@@ -1,9 +1,3 @@
-/**
- * Design tokens — the single source of truth. `scripts/build-tokens.ts` turns
- * them into CSS custom properties (src/styles/tokens.css); a test keeps the two
- * in sync and checks WCAG contrast of the key colour pairs in both themes.
- */
-
 export const colorTokens = {
   light: {
     bg: '#ffffff',
@@ -11,7 +5,6 @@ export const colorTokens = {
     surface: '#ffffff',
     'surface-raised': '#ffffff',
     border: '#e3e5ea',
-    // control boundaries (inputs, checkboxes) must reach 3:1 — WCAG 1.4.11
     'border-strong': '#858c9c',
     text: '#14161c',
     'text-muted': '#5b6170',
@@ -77,7 +70,6 @@ export const shadowTokens = {
   },
 } as const;
 
-/** Theme-independent tokens. */
 export const scaleTokens = {
   space: { 1: '4px', 2: '8px', 3: '12px', 4: '16px', 5: '20px', 6: '24px', 8: '32px', 10: '40px' },
   radius: { sm: '6px', md: '8px', lg: '12px', full: '9999px' },
@@ -92,7 +84,6 @@ export const scaleTokens = {
   z: { overlay: '1000', toast: '1100', tooltip: '1200' },
 } as const;
 
-/** `var(--nova-color-accent)` etc. — typed helpers for consumers writing CSS-in-JS. */
 export const cssVar = {
   color: (name: ColorToken) => `var(--nova-color-${name})`,
   space: (step: keyof typeof scaleTokens.space) => `var(--nova-space-${step})`,

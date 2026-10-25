@@ -2,7 +2,6 @@ import { defineConfig, devices } from '@playwright/test';
 
 const PORT = 6007;
 
-// Runs against the static Storybook build: every story is checked in a real browser
 export default defineConfig({
   testDir: 'e2e',
   fullyParallel: true,

@@ -1,7 +1,5 @@
 import { expect, test } from '@playwright/test';
 
-// An object control on a ReactNode prop lets anyone "Set object" and pass `{}`,
-// which crashes the story (React error #31). Only real data props may use it.
 test('no story exposes an object control for a non-data prop', async ({ page }) => {
   await page.goto('iframe.html');
   await page.waitForFunction(() => (window as any).__STORYBOOK_PREVIEW__?.storyStoreValue);

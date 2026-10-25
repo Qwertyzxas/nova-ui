@@ -4,11 +4,8 @@ import './TextField.css';
 
 interface BaseProps {
   label: ReactNode;
-  /** Help text under the field, linked via aria-describedby. */
   description?: ReactNode;
-  /** Error message; also marks the field aria-invalid. */
   error?: ReactNode;
-  /** Visually hide the label (it stays available to screen readers). */
   hideLabel?: boolean;
   prefix?: ReactNode;
   suffix?: ReactNode;

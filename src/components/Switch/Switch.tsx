@@ -11,7 +11,6 @@ export interface SwitchProps extends Omit<ComponentPropsWithRef<'button'>, 'onCh
   onCheckedChange?: (checked: boolean) => void;
 }
 
-/** An on/off setting that takes effect immediately (WAI-ARIA switch pattern). */
 export function Switch({
   label,
   description,

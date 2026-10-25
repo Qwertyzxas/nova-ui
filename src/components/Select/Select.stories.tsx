@@ -14,14 +14,21 @@ const cities = [
   { value: 'vlad', label: 'Владивосток' },
 ];
 
-/**
- * Select-only combobox по WAI-ARIA APG. Клавиатура: ↑ ↓ Home End — навигация,
- * Enter / Пробел / Tab — выбрать, Esc — закрыть, буквы — поиск по началу названия.
- */
 const meta = {
   title: 'Компоненты/Select',
   component: Select,
   args: { label: 'Город', options: cities, placeholder: 'Выберите город' },
+  argTypes: {
+    name: { description: 'Renders a hidden input so the value is submitted with a form.' },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Select-only combobox по WAI-ARIA APG. Клавиатура: ↑ ↓ Home End — навигация,\nEnter / Пробел / Tab — выбрать, Esc — закрыть, буквы — поиск по началу названия.',
+      },
+    },
+  },
   decorators: [(Story) => <div style={{ maxWidth: 320, minHeight: 340 }}><Story /></div>],
 } satisfies Meta<typeof Select>;
 

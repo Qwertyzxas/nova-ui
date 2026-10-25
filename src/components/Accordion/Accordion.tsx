@@ -13,7 +13,6 @@ const AccordionContext = createContext<AccordionContextValue | null>(null);
 
 type SingleProps = {
   type?: 'single';
-  /** In single mode, whether the open item can be closed again. */
   collapsible?: boolean;
   value?: string | null;
   defaultValue?: string | null;
@@ -28,13 +27,11 @@ type MultipleProps = {
 };
 
 export type AccordionProps = (SingleProps | MultipleProps) & {
-  /** Heading level wrapping each trigger, to fit the page outline. */
   headingLevel?: 2 | 3 | 4 | 5 | 6;
   className?: string;
   children: ReactNode;
 };
 
-/** Disclosure-based accordion: each header is a button inside a real heading. */
 export function Accordion(props: AccordionProps) {
   const { headingLevel = 3, className, children } = props;
   const multiple = props.type === 'multiple';

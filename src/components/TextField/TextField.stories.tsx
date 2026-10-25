@@ -2,8 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { ComponentType } from 'react';
 import { TextField, type TextFieldProps } from './TextField';
 
-// TextFieldProps is an input | textarea union, which Storybook can't turn into
-// controls; the stories use one flat argument shape instead
 type FieldArgs = Omit<Extract<TextFieldProps, { multiline?: false }>, 'multiline'> & { multiline?: boolean; rows?: number };
 const Field = TextField as unknown as ComponentType<FieldArgs>;
 
@@ -48,5 +46,9 @@ export const Sizes: Story = {
   ),
 };
 
-/** The label stays available to screen readers even when it is not shown. */
-export const HiddenLabel: Story = { args: { label: 'Поиск', hideLabel: true, placeholder: 'Поиск…', description: undefined } };
+export const HiddenLabel: Story = {
+  args: { label: 'Поиск', hideLabel: true, placeholder: 'Поиск…', description: undefined },
+  parameters: {
+    docs: { description: { story: 'The label stays available to screen readers even when it is not shown.' } },
+  },
+};

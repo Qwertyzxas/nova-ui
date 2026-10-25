@@ -6,7 +6,6 @@ import * as axeMatchers from 'vitest-axe/matchers';
 expect.extend(axeMatchers);
 afterEach(() => cleanup());
 
-// jsdom lacks <dialog> methods
 if (!HTMLDialogElement.prototype.showModal) {
   HTMLDialogElement.prototype.showModal = function () {
     this.open = true;

@@ -47,7 +47,6 @@
   gap: var(--nova-space-2);
 }
 
-/* the label stays in the layout so the width doesn't jump */
 .nova-button.is-loading .nova-button__content {
   visibility: hidden;
 }
@@ -87,7 +86,6 @@
   width: 100%;
 }
 
-/* tone × variant */
 .nova-button--solid.nova-button--accent {
   --_bg: var(--nova-color-accent);
   --_bg-hover: var(--nova-color-accent-hover);

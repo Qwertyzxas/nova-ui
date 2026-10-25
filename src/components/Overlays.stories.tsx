@@ -10,15 +10,29 @@ const meta = {
   title: 'Компоненты/Оверлеи',
   component: Dialog,
   args: { open: false, onOpenChange: () => {}, title: 'Dialog' },
-  parameters: { controls: { disable: true } },
+  argTypes: {
+    footer: { description: 'Action buttons, rendered at the bottom right.' },
+    closeOnBackdrop: { description: 'Close when the backdrop is clicked (default true).' },
+  },
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        component:
+          'Modal dialog on the native <dialog> element: the browser provides the focus\ntrap, Escape handling, inert background and focus return. Nova adds scroll\nlocking, labelling and a controlled `open` API.',
+      },
+    },
+  },
 } satisfies Meta<typeof Dialog>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** Нативный `<dialog>`: ловушка фокуса, Esc и возврат фокуса работают средствами браузера. */
 export const DialogStory: Story = {
   name: 'Dialog',
+  parameters: {
+    docs: { description: { story: 'Нативный `<dialog>`: ловушка фокуса, Esc и возврат фокуса работают средствами браузера.' } },
+  },
   render: function Render() {
     const [open, setOpen] = useState(false);
     return (
@@ -75,9 +89,11 @@ export const FormDialog: Story = {
   },
 };
 
-/** Наведите курсор или перейдите Tab'ом. Подсказку можно «поймать» курсором, Esc её скрывает. */
 export const TooltipStory: Story = {
   name: 'Tooltip',
+  parameters: {
+    docs: { description: { story: "Наведите курсор или перейдите Tab'ом. Подсказку можно «поймать» курсором, Esc её скрывает." } },
+  },
   render: () => (
     <div style={{ display: 'flex', gap: 12, paddingTop: 48 }}>
       <Tooltip content="Скопировать ссылку в буфер обмена">
@@ -118,9 +134,11 @@ function ToastDemo() {
   );
 }
 
-/** Таймер останавливается, пока курсор или фокус внутри уведомлений. */
 export const ToastStory: Story = {
   name: 'Toast',
+  parameters: {
+    docs: { description: { story: 'Таймер останавливается, пока курсор или фокус внутри уведомлений.' } },
+  },
   render: () => (
     <ToastProvider label="Уведомления" dismissLabel="Закрыть уведомление">
       <ToastDemo />

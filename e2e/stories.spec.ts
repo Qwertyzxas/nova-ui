@@ -3,8 +3,6 @@ import { expect, test } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-// Every story from the built Storybook, checked by axe in a real browser (jsdom
-// can't compute rendered colour contrast) in both themes.
 interface IndexEntry {
   id: string;
   title: string;
@@ -28,7 +26,6 @@ for (const theme of ['light', 'dark'] as const) {
       page.on('pageerror', (e) => errors.push(e.message));
       await page.goto(`iframe.html?id=${story.id}&viewMode=story&globals=theme:${theme}`);
       await expect(page.locator('#storybook-root > *').first()).toBeVisible();
-      // let entrance animations finish so colours are final
       await page.waitForTimeout(400);
       const results = await new AxeBuilder({ page }).include('#storybook-root').withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
       const violations = results.violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(' ')).join(', ')}`);

@@ -4,7 +4,6 @@ import './Spinner.css';
 
 export interface SpinnerProps extends ComponentPropsWithRef<'span'> {
   size?: 'sm' | 'md' | 'lg';
-  /** Announced to screen readers. Pass `null` when the spinner is decorative (e.g. inside a busy button). */
   label?: string | null;
 }
 

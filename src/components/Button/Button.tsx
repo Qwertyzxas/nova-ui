@@ -7,10 +7,6 @@ export interface ButtonProps extends ComponentPropsWithRef<'button'> {
   variant?: 'solid' | 'soft' | 'outline' | 'ghost';
   tone?: 'accent' | 'neutral' | 'danger';
   size?: 'sm' | 'md' | 'lg';
-  /**
-   * Shows a spinner and ignores clicks while keeping the button focusable and its
-   * width stable (it uses `aria-disabled`, not `disabled`, so focus isn't lost).
-   */
   loading?: boolean;
   iconStart?: ReactNode;
   iconEnd?: ReactNode;

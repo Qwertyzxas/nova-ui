@@ -16,6 +16,10 @@ const meta = {
     iconStart: { control: false },
     iconEnd: { control: false },
     type: { control: 'inline-radio', options: ['button', 'submit', 'reset'] },
+    loading: {
+      description:
+        "Shows a spinner and ignores clicks while keeping the button focusable and its\nwidth stable (it uses `aria-disabled`, not `disabled`, so focus isn't lost).",
+    },
   },
 } satisfies Meta<typeof Button>;
 
@@ -54,8 +58,10 @@ export const WithIcon: Story = {
   args: { iconStart: <PlusIcon />, children: 'Новая задача' },
 };
 
-/** `loading` keeps the button focusable and its width stable; clicks are ignored. */
 export const Loading: Story = {
+  parameters: {
+    docs: { description: { story: '`loading` keeps the button focusable and its width stable; clicks are ignored.' } },
+  },
   render: function Render(args) {
     const [loading, setLoading] = useState(false);
     return (

@@ -8,20 +8,13 @@ export interface DialogProps {
   title: ReactNode;
   description?: ReactNode;
   children?: ReactNode;
-  /** Action buttons, rendered at the bottom right. */
   footer?: ReactNode;
   size?: 'sm' | 'md' | 'lg';
-  /** Close when the backdrop is clicked (default true). */
   closeOnBackdrop?: boolean;
   closeLabel?: string;
   className?: string;
 }
 
-/**
- * Modal dialog on the native <dialog> element: the browser provides the focus
- * trap, Escape handling, inert background and focus return. Nova adds scroll
- * locking, labelling and a controlled `open` API.
- */
 export function Dialog({
   open,
   onOpenChange,
@@ -46,7 +39,6 @@ export function Dialog({
     if (!open && dialog.open) dialog.close();
   }, [open]);
 
-  // the page behind a modal shouldn't scroll
   useEffect(() => {
     if (!open) return;
     const root = document.documentElement;
@@ -64,13 +56,11 @@ export function Dialog({
       aria-labelledby={titleId}
       aria-describedby={descriptionId}
       onCancel={(event) => {
-        // Escape: keep the element open until the parent agrees (controlled)
         event.preventDefault();
         onOpenChange(false);
       }}
       onClose={() => open && onOpenChange(false)}
       onClick={(event) => {
-        // a click on the ::backdrop targets the <dialog> element itself
         if (closeOnBackdrop && event.target === ref.current) onOpenChange(false);
       }}
     >

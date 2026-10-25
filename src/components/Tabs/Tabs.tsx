@@ -22,7 +22,6 @@ const tabId = (base: string, value: string) => `${base}-tab-${value}`;
 const panelId = (base: string, value: string) => `${base}-panel-${value}`;
 
 export interface TabsProps {
-  /** The tab that is open first (uncontrolled). */
   defaultValue: string;
   value?: string;
   onValueChange?: (value: string) => void;
@@ -31,7 +30,6 @@ export interface TabsProps {
   children: ReactNode;
 }
 
-/** WAI-ARIA tabs with automatic activation: arrow keys move focus and select. */
 export function Tabs({ defaultValue, value: valueProp, onValueChange, orientation = 'horizontal', className, children }: TabsProps) {
   const baseId = useId();
   const [value, select] = useControllableState({ value: valueProp, defaultValue, onChange: onValueChange });
@@ -43,7 +41,6 @@ export function Tabs({ defaultValue, value: valueProp, onValueChange, orientatio
 }
 
 export interface TabListProps {
-  /** Describes the set of tabs for screen readers. */
   'aria-label': string;
   children: ReactNode;
   className?: string;
@@ -93,7 +90,6 @@ export function Tab({ value, disabled, children }: TabProps) {
       id={tabId(ctx.baseId, value)}
       aria-selected={selected}
       aria-controls={panelId(ctx.baseId, value)}
-      // roving tabindex: only the selected tab is in the Tab order
       tabIndex={selected ? 0 : -1}
       disabled={disabled}
       data-value={value}
@@ -119,7 +115,6 @@ export function TabPanel({ value, children, className }: TabPanelProps) {
       id={panelId(ctx.baseId, value)}
       aria-labelledby={tabId(ctx.baseId, value)}
       hidden={ctx.value !== value}
-      // lets keyboard users reach panels that have no focusable content
       tabIndex={0}
       className={cx('nova-tabs__panel nova-focusable', className)}
     >

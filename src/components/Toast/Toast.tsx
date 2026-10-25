@@ -6,7 +6,6 @@ export interface ToastOptions {
   title: ReactNode;
   description?: ReactNode;
   tone?: 'neutral' | 'success' | 'danger';
-  /** Milliseconds before auto-dismiss; `Infinity` keeps it until closed. */
   duration?: number;
   action?: { label: string; onClick: () => void };
 }
@@ -30,21 +29,14 @@ export function useToast(): ToastApi {
 
 export interface ToastProviderProps {
   children: ReactNode;
-  /** Name of the notifications landmark. */
   label?: string;
   dismissLabel?: string;
-  /** Older toasts beyond this are dropped. */
   max?: number;
   defaultDuration?: number;
 }
 
 let counter = 0;
 
-/**
- * Toasts in a polite live region that exists before any toast is added (so the
- * first one is announced). Timers pause while the pointer or focus is inside,
- * so nobody loses a message they are reading or about to act on.
- */
 export function ToastProvider({ children, label = 'Notifications', dismissLabel = 'Dismiss notification', max = 3, defaultDuration = 5000 }: ToastProviderProps) {
   const [toasts, setToasts] = useState<ToastItem[]>([]);
   const timers = useRef(new Map<string, { handle: number; deadline: number; remaining: number }>());

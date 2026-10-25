@@ -5,7 +5,6 @@ import { contrast } from './contrast.ts';
 import { renderTokensCss } from './css.ts';
 import { colorTokens, type ColorToken } from './tokens.ts';
 
-// [foreground, background, minimum ratio]
 const PAIRS: [ColorToken, ColorToken, number][] = [
   ['text', 'bg', 4.5],
   ['text', 'surface-raised', 4.5],
@@ -21,7 +20,6 @@ const PAIRS: [ColorToken, ColorToken, number][] = [
   ['danger-fg', 'danger-soft', 4.5],
   ['success-fg', 'success-soft', 4.5],
   ['warning-fg', 'warning-soft', 4.5],
-  // non-text UI (WCAG 1.4.11): control borders and the focus ring need 3:1
   ['border-strong', 'surface', 3],
   ['border-strong', 'bg-subtle', 3],
   ['focus-ring', 'bg', 3],

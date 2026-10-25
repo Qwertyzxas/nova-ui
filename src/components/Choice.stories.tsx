@@ -8,6 +8,14 @@ const meta = {
   title: 'Компоненты/Выбор',
   component: Checkbox,
   args: { label: 'Принимаю условия использования' },
+  argTypes: {
+    indeterminate: { description: '"Some selected" state; screen readers announce it as mixed.' },
+  },
+  parameters: {
+    docs: {
+      description: { component: 'A native checkbox (free keyboard, form and a11y behaviour) with a custom look.' },
+    },
+  },
 } satisfies Meta<typeof Checkbox>;
 
 export default meta;
@@ -20,9 +28,11 @@ export const CheckboxWithDescription: Story = {
   args: { label: 'Еженедельная сводка', description: 'Письмо по понедельникам, можно отписаться в один клик.', defaultChecked: true },
 };
 
-/** «Выбрать все» с частично выбранным состоянием (`indeterminate`). */
 export const SelectAll: Story = {
   name: 'Checkbox: выбрать все',
+  parameters: {
+    docs: { description: { story: '«Выбрать все» с частично выбранным состоянием (`indeterminate`).' } },
+  },
   render: function Render() {
     const items = ['Дизайн', 'Фронтенд', 'Бэкенд'];
     const [checked, setChecked] = useState<string[]>(['Дизайн']);

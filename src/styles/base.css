@@ -1,6 +1,3 @@
-/* Shared foundations for every Nova component. Nothing here touches the host page
-   beyond elements carrying a `nova-` class. */
-
 [class^='nova-'],
 [class*=' nova-'],
 [class^='nova-']::before,
@@ -16,7 +13,6 @@
   background: var(--nova-color-bg);
 }
 
-/* one focus treatment for all interactive parts */
 .nova-focusable:focus-visible {
   outline: 2px solid var(--nova-color-focus-ring);
   outline-offset: 2px;

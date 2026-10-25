@@ -96,9 +96,11 @@ const meta = {
 
 export default meta;
 
-/** Компоненты вместе: валидация при отправке, состояние загрузки и уведомление. */
 export const SettingsForm: StoryObj = {
   name: 'Форма настроек',
+  parameters: {
+    docs: { description: { story: 'Компоненты вместе: валидация при отправке, состояние загрузки и уведомление.' } },
+  },
   render: () => (
     <ToastProvider label="Уведомления" dismissLabel="Закрыть уведомление">
       <Form />

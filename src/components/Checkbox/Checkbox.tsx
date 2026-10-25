@@ -6,18 +6,15 @@ import './Checkbox.css';
 export interface CheckboxProps extends Omit<ComponentPropsWithRef<'input'>, 'type'> {
   label: ReactNode;
   description?: ReactNode;
-  /** "Some selected" state; screen readers announce it as mixed. */
   indeterminate?: boolean;
 }
 
-/** A native checkbox (free keyboard, form and a11y behaviour) with a custom look. */
 export function Checkbox({ label, description, indeterminate = false, className, id: idProp, ref, ...rest }: CheckboxProps) {
   const autoId = useId();
   const id = idProp ?? `nova-checkbox-${autoId}`;
   const descriptionId = description ? `${id}-description` : undefined;
   const inner = useRef<HTMLInputElement>(null);
 
-  // `indeterminate` exists only as a DOM property, not as an attribute
   useEffect(() => {
     if (inner.current) inner.current.indeterminate = indeterminate;
   }, [indeterminate]);

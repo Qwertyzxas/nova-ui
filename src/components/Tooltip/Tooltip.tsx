@@ -15,10 +15,8 @@ import './Tooltip.css';
 
 export interface TooltipProps {
   content: ReactNode;
-  /** A single focusable element (button, link…) the tooltip describes. */
   children: ReactElement<{ 'aria-describedby'?: string }>;
   placement?: 'top' | 'bottom';
-  /** Hover delay in ms; keyboard focus shows it immediately. */
   delay?: number;
 }
 
@@ -26,7 +24,6 @@ const GAP = 8;
 const EDGE = 8;
 const HIDE_GRACE_MS = 120;
 
-/** Pure positioning: prefers `placement`, flips when there is no room, stays on screen. */
 export function computeTooltipPosition(
   anchor: { top: number; bottom: number; left: number; width: number },
   tip: { width: number; height: number },
@@ -42,11 +39,6 @@ export function computeTooltipPosition(
   return { top: side === 'top' ? above : below, left, side };
 }
 
-/**
- * Hover/focus tooltip (WCAG 1.4.13): dismissable with Escape, hoverable (the
- * pointer can move onto it), persistent until pointer/focus leave. The bubble is
- * always in the DOM so aria-describedby never points at a missing element.
- */
 export function Tooltip({ content, children, placement = 'top', delay = 400 }: TooltipProps) {
   const id = useId();
   const [open, setOpen] = useState(false);

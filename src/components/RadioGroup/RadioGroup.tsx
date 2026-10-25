@@ -17,14 +17,12 @@ export interface RadioGroupProps {
   value?: string;
   defaultValue?: string;
   onValueChange?: (value: string) => void;
-  /** Form field name; generated when omitted. */
   name?: string;
   orientation?: 'vertical' | 'horizontal';
   disabled?: boolean;
   className?: string;
 }
 
-/** Native radios inside a fieldset: arrow keys, form submission and a11y come for free. */
 export function RadioGroup({
   label,
   options,

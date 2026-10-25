@@ -28,7 +28,6 @@
   white-space: nowrap;
 }
 
-/* placeholder is real text here, so it must meet 4.5:1 like any other text */
 .nova-select__value.is-placeholder {
   color: var(--nova-color-text-muted);
 }

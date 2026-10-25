@@ -32,7 +32,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  /* a slow pulse instead of spinning */
   .nova-spinner svg {
     animation: nova-pulse 1.6s ease-in-out infinite !important;
   }

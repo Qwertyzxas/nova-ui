@@ -4,7 +4,6 @@ import './Badge.css';
 
 export interface BadgeProps extends ComponentPropsWithRef<'span'> {
   tone?: 'neutral' | 'accent' | 'success' | 'warning' | 'danger';
-  /** A small coloured dot before the text, e.g. for statuses. */
   dot?: boolean;
 }
 

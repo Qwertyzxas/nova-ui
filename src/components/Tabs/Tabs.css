@@ -45,7 +45,6 @@
   color: var(--nova-color-text);
 }
 
-/* selection indicator */
 .nova-tabs__tab::after {
   content: '';
   position: absolute;

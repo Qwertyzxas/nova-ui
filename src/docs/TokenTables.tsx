@@ -14,7 +14,6 @@ const TEXT_ON: Partial<Record<ColorToken, ColorToken>> = {
 
 const cell = { padding: '8px 12px', borderBottom: '1px solid var(--nova-color-border)', textAlign: 'left' as const };
 
-/** Colour tokens of both themes, generated from tokens.ts, with WCAG contrast for text pairs. */
 export function ColorTable() {
   const names = Object.keys(colorTokens.light) as ColorToken[];
   return (

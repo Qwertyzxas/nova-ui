@@ -7,7 +7,6 @@ import './Select.css';
 export interface SelectOption {
   value: string;
   label: string;
-  /** Secondary line under the label, e.g. why the option is unavailable. */
   hint?: string;
   disabled?: boolean;
 }
@@ -22,7 +21,6 @@ export interface SelectProps {
   description?: ReactNode;
   error?: ReactNode;
   disabled?: boolean;
-  /** Renders a hidden input so the value is submitted with a form. */
   name?: string;
   hideLabel?: boolean;
   size?: 'sm' | 'md' | 'lg';
@@ -32,11 +30,6 @@ export interface SelectProps {
 
 const TYPEAHEAD_RESET_MS = 500;
 
-/**
- * Select-only combobox (WAI-ARIA APG): focus stays on the trigger, the highlighted
- * option is exposed through aria-activedescendant. Supports arrows, Home/End,
- * Enter/Space/Tab to pick, Escape to dismiss and type-to-search.
- */
 export function Select({
   label,
   options,
@@ -78,7 +71,6 @@ export function Select({
   const firstEnabled = () => options.findIndex((_, i) => enabled(i));
   const lastEnabled = () => options.findLastIndex((_, i) => enabled(i));
 
-  /** Next enabled option in `step` direction; stays put at the ends. */
   const step = (from: number, delta: 1 | -1) => {
     for (let i = from + delta; i >= 0 && i < options.length; i += delta) if (enabled(i)) return i;
     return from;
@@ -100,7 +92,6 @@ export function Select({
     window.clearTimeout(t.timer);
     t.text += char.toLowerCase();
     t.timer = window.setTimeout(() => (t.text = ''), TYPEAHEAD_RESET_MS);
-    // a repeated single letter cycles through matches; otherwise match the typed prefix
     const repeated = t.text.length > 1 && [...t.text].every((c) => c === t.text[0]);
     const query = repeated ? t.text[0]! : t.text;
     const start = repeated || t.text.length === 1 ? from + 1 : from;
@@ -146,7 +137,6 @@ export function Select({
         commit(active);
         break;
       case ' ':
-        // while typing a multi-letter query, space is part of it
         if (typeahead.current.text) {
           const match = search(' ', active);
           if (match >= 0) setActive(match);
@@ -156,7 +146,6 @@ export function Select({
         setOpen(false);
         break;
       case 'Tab':
-        // pick and let focus move on naturally
         if (enabled(active)) setValue(options[active]!.value);
         setOpen(false);
         return;
@@ -170,7 +159,6 @@ export function Select({
     event.preventDefault();
   };
 
-  // close when the pointer goes down anywhere outside
   useEffect(() => {
     if (!open) return;
     const onPointerDown = (event: PointerEvent) => {
@@ -180,7 +168,6 @@ export function Select({
     return () => document.removeEventListener('pointerdown', onPointerDown);
   }, [open]);
 
-  // keep the highlighted option visible in a scrolling list
   useEffect(() => {
     if (open && active >= 0) document.getElementById(`${id}-option-${active}`)?.scrollIntoView({ block: 'nearest' });
   }, [open, active, id]);
@@ -219,7 +206,6 @@ export function Select({
             <path d="m4 6 4 4 4-4" />
           </svg>
         </button>
-        {/* always rendered so aria-controls points at a real element */}
         <ul ref={listRef} id={ids.listbox} role="listbox" aria-labelledby={ids.label} className="nova-select__list" hidden={!open}>
           {options.map((option, index) => (
             <li
@@ -230,14 +216,12 @@ export function Select({
               aria-disabled={option.disabled || undefined}
               aria-describedby={option.hint ? ids.hint(index) : undefined}
               className={cx('nova-select__option', index === active && 'is-active')}
-              // keep focus on the trigger while clicking
               onMouseDown={(e) => e.preventDefault()}
               onPointerMove={() => enabled(index) && setActive(index)}
               onClick={() => commit(index)}
             >
               <span className="nova-select__text">
                 {option.label}
-                {/* kept out of the option's name, announced as its description instead */}
                 {option.hint && (
                   <span id={ids.hint(index)} className="nova-select__hint" aria-hidden="true">
                     {option.hint}

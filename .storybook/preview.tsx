@@ -4,8 +4,6 @@ import '../src/styles/tokens.css';
 import '../src/styles/base.css';
 import './preview.css';
 
-// ReactNode props get an object control by default, and "Set object" passes `{}`,
-// which React can't render. Edit them as plain text instead.
 const reactNodeAsText: ArgTypesEnhancer = ({ argTypes }) =>
   Object.fromEntries(
     Object.entries(argTypes).map(([name, argType]: [string, InputType]) => {
@@ -37,7 +35,6 @@ const preview: Preview = {
   parameters: {
     layout: 'padded',
     controls: { expanded: true, sort: 'requiredFirst' },
-    // fail the a11y panel on any violation instead of only warning
     a11y: { test: 'error' },
     options: {
       storySort: { order: ['Введение', 'Токены', 'Компоненты', 'Примеры'] },

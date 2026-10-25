@@ -1,4 +1,3 @@
-// Teaches TypeScript about the `toHaveNoViolations` matcher registered in setup.ts
 import 'vitest';
 import type { AxeMatchers } from 'vitest-axe/matchers';
 

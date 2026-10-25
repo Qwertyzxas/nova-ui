@@ -61,11 +61,11 @@ describe('Select', () => {
     await user.keyboard('{ArrowDown}');
     expect(active()).toBe('Armenia');
     await user.keyboard('{ArrowDown}{ArrowDown}{ArrowDown}');
-    expect(active()).toBe('Canada'); // Bulgaria is disabled
+    expect(active()).toBe('Canada');
     await user.keyboard('{End}');
     expect(active()).toBe('Kazakhstan');
     await user.keyboard('{ArrowDown}');
-    expect(active()).toBe('Kazakhstan'); // stays at the end
+    expect(active()).toBe('Kazakhstan');
     await user.keyboard('{Home}{Enter}');
     expect(onValueChange).toHaveBeenLastCalledWith('am');
     expect(trigger).toHaveAttribute('aria-expanded', 'false');
@@ -89,7 +89,7 @@ describe('Select', () => {
     expect(trigger).toHaveAttribute('aria-expanded', 'true');
     expect(active()).toBe('Belarus');
     await user.keyboard('b');
-    expect(active()).toBe('Brazil'); // repeated letter cycles (Bulgaria is disabled)
+    expect(active()).toBe('Brazil');
     await user.keyboard('{Escape}');
   });
 

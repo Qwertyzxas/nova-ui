@@ -9,15 +9,25 @@ const meta = {
   title: 'Компоненты/Отображение',
   component: Tabs,
   args: { defaultValue: 'overview', children: null },
-  parameters: { controls: { disable: true } },
+  argTypes: {
+    defaultValue: { description: 'The tab that is open first (uncontrolled).' },
+  },
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: { component: 'WAI-ARIA tabs with automatic activation: arrow keys move focus and select.' },
+    },
+  },
 } satisfies Meta<typeof Tabs>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/** ← → Home End переключают вкладки; Tab уходит сразу в содержимое. */
 export const TabsStory: Story = {
   name: 'Tabs',
+  parameters: {
+    docs: { description: { story: '← → Home End переключают вкладки; Tab уходит сразу в содержимое.' } },
+  },
   render: () => (
     <Tabs defaultValue="overview">
       <TabList aria-label="Проект">

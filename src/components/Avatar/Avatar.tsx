@@ -3,13 +3,11 @@ import { cx } from '../../utils/cx';
 import './Avatar.css';
 
 export interface AvatarProps extends Omit<ComponentPropsWithRef<'span'>, 'children'> {
-  /** Used for the image alt text and the initials fallback. */
   name: string;
   src?: string;
   size?: 'sm' | 'md' | 'lg';
 }
 
-/** "Ada Lovelace" → "AL", "Тимур" → "Т" */
 export function initials(name: string): string {
   const words = name.trim().split(/\s+/).filter(Boolean);
   return words
@@ -18,7 +16,6 @@ export function initials(name: string): string {
     .join('');
 }
 
-/** Image with an initials fallback that also kicks in when the image fails to load. */
 export function Avatar({ name, src, size = 'md', className, ...rest }: AvatarProps) {
   const [failedSrc, setFailedSrc] = useState<string | null>(null);
   const showImage = src && failedSrc !== src;
